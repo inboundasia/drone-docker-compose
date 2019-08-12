@@ -1,0 +1,18 @@
+version: '3'
+services:
+  drone-server:
+    image: drone/drone:1.2.3
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./drone:/var/lib/drone/
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_GITHUB_SERVER=https://github.com
+      - DRONE_GITHUB_CLIENT_ID=62b839d438e442335111
+      - DRONE_GITHUB_CLIENT_SECRET=440dd2edd0e587e4793a066ce9c636465b937750
+      - DRONE_RUNNER_CAPACITY=2
+      - DRONE_SERVER_HOST=a92a518e.ngrok.io
+      - DRONE_SERVER_PROTO=https
+      - DRONE_TLS_AUTOCERT=true

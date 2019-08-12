@@ -1,0 +1,8 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: example
+    image: alpine
+    commands:
+      echo hello

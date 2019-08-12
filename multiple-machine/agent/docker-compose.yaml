@@ -1,0 +1,14 @@
+version: '3'
+services:
+  drone-agent:
+    image: drone/agent:1.2.3
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DRONE_RPC_PROTO=https
+      - DRONE_RPC_HOST=a92a518e.ngrok.io
+      - DRONE_RPC_SECRET=a309cf2f2f0f7a683805f7ba8142cb44
+      - DRONE_RUNNER_CAPACITY=2
+      - DRONE_RUNNER_NAME=drone-agent-1
