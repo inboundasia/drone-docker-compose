@@ -1,12 +1,16 @@
+This is a demo for multiple machine installation
+
 # Github
 
 ngrok http 80
 
-修改 Github 上的 Authorization callback URL
-https://github.com/settings/applications/1115192
+Modify Authorization callback URL on Github
 
-docker-compose -f server/docker-compose.yaml up
-docker-compose -f agent/docker-compose.yaml up
+Modify docker-compose files inside server and agent folder
+
+$ docker-compose -f server/docker-compose.yaml up
+
+$ docker-compose -f agent/docker-compose.yaml up
 
 # Drone Cli
 
