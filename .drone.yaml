@@ -20,7 +20,7 @@ trigger:
 ---
 
 kind: pipeline
-name: dev
+name: staging
 
 steps:
   - name: build
@@ -32,9 +32,3 @@ steps:
     image: alpine
     commands:
     - echo run test12
-
-trigger:
-  branch:
-  - dev
-  event:
-  - push
