@@ -1,19 +1,4 @@
 kind: pipeline
-name: production
-
-steps:
-  - name: deploy
-    image: alpine
-    commands:
-    - echo deploy to server
-
-  - name: notify
-    image: alpine
-    commands:
-    - echo notify
-
----
-kind: pipeline
 name: default
 
 steps:
