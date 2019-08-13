@@ -12,12 +12,6 @@ steps:
     commands:
     - echo notify
 
-when:
-  event:
-  - tag
-  branch:
-  - master
-
 ---
 kind: pipeline
 name: default
