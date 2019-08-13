@@ -1,8 +1,34 @@
 kind: pipeline
+name: production
+
+steps:
+  - name: deploy
+    image: alpine
+    commands:
+    - echo deploy to server
+
+  - name: notify
+    image: alpine
+    commands:
+    - echo notify
+
+when:
+  event:
+  - tag
+  branch:
+  - master
+
+---
+kind: pipeline
 name: default
 
 steps:
-  - name: example
+  - name: build
     image: alpine
     commands:
-    - echo hello world
+    - echo build some code
+
+  - name: test
+    image: alpine
+    commands:
+    - echo run test
