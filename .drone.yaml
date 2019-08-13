@@ -9,7 +9,7 @@ steps:
   - name: notify
     image: alpine
     commands:
-    - echo notify
+    - echo notify22
 
 trigger:
   branch:
