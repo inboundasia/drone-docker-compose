@@ -9,3 +9,5 @@ Modify Authorization callback URL on Github
 Modify docker-compose.yaml
 
 $ docker-compose up
+
+$ docker-compose down -v

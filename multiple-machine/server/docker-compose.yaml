@@ -17,3 +17,4 @@ services:
       - DRONE_SERVER_HOST=a92a518e.ngrok.io
       - DRONE_SERVER_PROTO=https
       - DRONE_TLS_AUTOCERT=true
+      - DRONE_USER_FILTER=inboundasia
