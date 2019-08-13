@@ -1,6 +1,23 @@
 kind: pipeline
 name: default
 
+when:
+  branch:
+  - master
+  event:
+  - tag
+
+steps:
+- name: deploy
+  image: alpine
+  commands:
+  - echo deploy
+
+---
+
+kind: pipeline
+name: default
+
 steps:
   - name: build
     image: alpine
