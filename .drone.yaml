@@ -6,16 +6,17 @@ steps:
   image: alpine
   commands:
   - echo deploy
-  when:
-    branch:
-    - master
-    event:
-    - tag
+
+trigger:
+  branch:
+  - master
+  event:
+  - tag
 
 ---
 
 kind: pipeline
-name: default
+name: dev
 
 steps:
   - name: build
@@ -27,3 +28,7 @@ steps:
     image: alpine
     commands:
     - echo run test12
+
+trigger:
+  branch:
+  - dev
