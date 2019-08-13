@@ -5,6 +5,6 @@ This repository show how to use docker-compose to install drone
 
 See .drone.yaml for demo
 
-* push event on master branch => build, test, notify
+* push event on master branch => (pipeline staging) build, test, notify
 
-* tag event on master branch => deploy, notify
+* tag event on master branch => (pipeline production) deploy, notify
