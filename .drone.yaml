@@ -1,17 +1,16 @@
 kind: pipeline
 name: production
 
-when:
-  branch:
-  - master
-  event:
-  - tag
-
 steps:
 - name: deploy
   image: alpine
   commands:
   - echo deploy
+  when:
+    branch:
+    - master
+    event:
+    - tag
 
 ---
 
