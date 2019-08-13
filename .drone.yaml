@@ -2,10 +2,14 @@ kind: pipeline
 name: production
 
 steps:
-- name: deploy
-  image: alpine
-  commands:
-  - echo deploy
+  - name: deploy
+    image: alpine
+    commands:
+    - echo deploy
+  - name: notify
+    image: alpine
+    commands:
+    - echo notify
 
 trigger:
   branch:
@@ -32,3 +36,5 @@ steps:
 trigger:
   branch:
   - dev
+  event:
+  - push
