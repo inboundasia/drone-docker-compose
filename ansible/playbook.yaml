@@ -1,0 +1,60 @@
+# - name: "basic setup"
+#   become: true
+#   hosts: all
+#   tasks:
+#   - name: 'install pip'
+#     apt:
+#       name: python-pip
+#       update_cache: yes
+#   - name: 'install docker-py'
+#     pip:
+#       name: docker
+
+- name: "deploy drone server."
+  hosts: drone_server
+  become: true
+  become_user: root
+  tasks:
+  - name: "start drone server docker"
+    docker_container:
+      name: 'drone_server'
+      image: "drone/drone:1.2.3"
+      state: started
+      restart_policy: always
+      ports:
+        - 80:80
+        - 443:443
+      volumes:
+        - ./drone:/var/lib/drone/
+        - /var/run/docker.sock:/var/run/docker.sock
+      env:
+        DRONE_GITHUB_SERVER: https://github.com
+        DRONE_GITHUB_CLIENT_ID: 62b839d438e442335111
+        DRONE_GITHUB_CLIENT_SECRET: f16b7a75b94cdc9b36a3ee785660bf72d3a19c7c
+        DRONE_AGENTS_ENABLED: "true"
+        DRONE_RPC_SECRET: a309cf2f2f0f7a683805f7ba8142cb44
+        DRONE_SERVER_HOST: a78d9bfd.ngrok.io
+        DRONE_SERVER_PROTO: https
+        DRONE_TLS_AUTOCERT: "true"
+
+- name: "deploy drone agent."
+  hosts: drone_agent
+  become: true
+  become_user: root
+  tasks:
+  - name: "start drone agent docker"
+    docker_container:
+      name: 'drone_agent'
+      image: "drone/drone:1.2.3"
+      state: started
+      restart_policy: always
+      ports:
+        - 3000:3000
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      env:
+        DRONE_RPC_PROTO: https
+        DRONE_RPC_HOST: a78d9bfd.ngrok.io
+        DRONE_RPC_SECRET: a309cf2f2f0f7a683805f7ba8142cb44
+        DRONE_RUNNER_CAPACITY: "2"
+        DRONE_RUNNER_NAME: drone-agent-1

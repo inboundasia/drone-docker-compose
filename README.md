@@ -1,4 +1,4 @@
-This repository show how to use docker-compose to install drone
+This repository shows how to use docker-compose to install drone
 
 * multiple machine install
 * single machine install
