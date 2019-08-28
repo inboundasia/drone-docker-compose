@@ -45,7 +45,7 @@
   - name: "start drone agent docker"
     docker_container:
       name: 'drone_agent'
-      image: "drone/drone:1.2.3"
+      image: "drone/agent:1.2.3"
       state: started
       restart_policy: always
       ports:
