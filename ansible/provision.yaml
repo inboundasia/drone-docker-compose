@@ -7,14 +7,6 @@
         repo: deb http://archive.ubuntu.com/ubuntu bionic universe
         state: present
       when: ansible_distribution_release == 'bionic'
-  post_tasks:
-    - name: 'install pip'
-      apt:
-        name: python-pip
-        update_cache: yes
-    - name: 'install docker-py'
-      pip:
-        name: docker
     - name: Update and upgrade apt packages
       become: true
       apt:
